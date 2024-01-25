@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - buff
+  - circle
+  - enemy
+  - player
+  - fire
+  - destroy
+  - block
+  - chest
+  - bullet
+  - target_point
+  - BOT
+  - banana
+  - Wall
+  - Ramp
+  - Grass
+  - HighRamp
+  - racetrack
+  - safe
+  - Floor
+  - Throwable
+  - Mud
+  - coin
+  - slow
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - post processing
+  - car
+  - car_hide
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
