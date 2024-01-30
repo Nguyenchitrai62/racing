@@ -105,6 +105,7 @@ public class boat : MonoBehaviour
                     {
                         myButton.onClick.Invoke();
                     }
+                    PlayerPrefs.SetFloat("score" + gameObject.scene.name, score);
                     UI_game_over.SetActive(true);
                     pause_bar.transform.parent.gameObject.SetActive(false);
                 }

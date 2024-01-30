@@ -108,7 +108,7 @@ public class car_ctrl : MonoBehaviour
 
         if (finish)
         {
-            for (int i = 2; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 wheels[i].brakeTorque = speed_value * 80;
             }
@@ -119,7 +119,7 @@ public class car_ctrl : MonoBehaviour
             move_vehical(IM.vertical);
         }
 
-        get_friction();
+        //get_friction();
 
         //if (!bread.activeSelf) bread.transform.position = transform.position + transform.forward * 5 + new Vector3(0, 1f, 0);
         //if (rank == 1) nearest = BOT_nearest();
@@ -211,6 +211,7 @@ public class car_ctrl : MonoBehaviour
             //Sound_Manager.Instance.sound_effect[3].GetComponent<AudioSource>().enabled = true;
             if (skill == 1)
             {
+                drive = drive_type.all_wheel_drive;
                 Sound_Manager.Instance.sound_effect[26].GetComponent<AudioSource>().volume = 1f;
                 boost = true;
                 vfx[2].Play();
@@ -312,6 +313,8 @@ public class car_ctrl : MonoBehaviour
     }
     public void speed_down()
     {
+        drive = drive_type.rear_wheel_drive;
+        wheels[0].motorTorque = wheels[1].motorTorque = 0;
         Sound_Manager.Instance.sound_effect[26].GetComponent<AudioSource>().volume = 0.5f;
         motor_torque = 2500;
         boost = false;
@@ -563,6 +566,7 @@ public class car_ctrl : MonoBehaviour
     {
         if (skill == 1)
         {
+            drive = drive_type.all_wheel_drive;
             Sound_Manager.Instance.sound_effect[26].GetComponent<AudioSource>().volume = 1f;
             boost = true;
             vfx[2].Play();

@@ -88,7 +88,6 @@ public class player : MonoBehaviour
                 claim_x2_text.text = (score * 2).ToString();
 
                 pause_bt.SetActive(false);
-                score_value_text.text = score.ToString();
 
                 if (score == 0 && myButton.gameObject.activeSelf)
                 {
@@ -155,7 +154,9 @@ public class player : MonoBehaviour
         {
             if (Time.time - start_game_over > 2 && !UI_game_over.activeSelf)
             {
+                PlayerPrefs.SetFloat("score" + gameObject.scene.name, score);
                 UI_game_over.SetActive(true);
+
                 PlayerPrefs.SetFloat("score_plappy_bird", score);
                 if (score == 0)
                 {

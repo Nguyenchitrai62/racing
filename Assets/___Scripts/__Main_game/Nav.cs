@@ -8,6 +8,7 @@ public class RandomNavDestination : MonoBehaviour
 {
     public GameObject UI_Help_Prefab;
     private GameObject UI_help;
+    private Image fill_amount_Image;
     private TextMeshProUGUI Help_text;
 
     public GameObject player;
@@ -26,7 +27,8 @@ public class RandomNavDestination : MonoBehaviour
 
         if (UI_help == null)
         {
-            UI_help = Instantiate(UI_Help_Prefab, GameObject.Find("Canvas").transform.Find("play")); 
+            UI_help = Instantiate(UI_Help_Prefab, GameObject.Find("Canvas").transform.Find("play"));
+            fill_amount_Image = UI_help.transform.Find("Fill_Amount").GetComponent<Image>();
             Help_text = UI_help.transform.Find("Text").GetComponent<TextMeshProUGUI>();   
         }
         UI_help.SetActive(false);
@@ -76,7 +78,7 @@ public class RandomNavDestination : MonoBehaviour
         if (UI_help.activeSelf)
         {
             UI_help.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0, Screen.height / 8);
-            UI_help.GetComponent<Image>().fillAmount = (Time.time - start_time) / 1.5f;
+            fill_amount_Image.fillAmount = (Time.time - start_time) / 1.5f;
             Help_text.text = Mathf.Ceil((1.5f - Time.time + start_time) / 0.5f).ToString();
         }
     }

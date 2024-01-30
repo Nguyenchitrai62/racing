@@ -14,7 +14,7 @@ public class load : MonoBehaviour
         canvas_controller.Instance.mini_game = true;
         canvas_controller.Instance._time_minigame = Time.time;
         canvas_controller.Instance.UI_start.SetActive(true);
-        Invoke("time_scale_0", 0.02f);
+        //Invoke("time_scale_0", 0.02f);
     }
     void time_scale_0()
     {

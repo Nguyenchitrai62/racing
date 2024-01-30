@@ -64,8 +64,8 @@ public class player_controler : MonoBehaviour
         slow_speed = canvas_controller.speed * 0.6f;
         cout_down = false;
         Sound_Manager.Instance.stop_all_sound_effect();
-        Sound_Manager.Instance.Play_Music("BGM", 0);
-        Sound_Manager.Instance.Play_Music("BGM", 1);
+        Sound_Manager.Instance.Play_Music("BGM-Action", 0);
+        Sound_Manager.Instance.Play_Music("BGM-Action", 1);
         circle.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -128,7 +128,7 @@ public class player_controler : MonoBehaviour
 
         if (canvas_controller.cur_score == canvas_controller.max_score && !rb.isKinematic)
         {
-            Sound_Manager.Instance.Play_Music("BGM", 0);
+            Sound_Manager.Instance.Play_Music("BGM-Action", 0);
             Sound_Manager.Instance.stop_all_sound_effect();
             Sound_Manager.Instance.Play_Sound("GameWin");
             rb.velocity = Vector3.zero;
@@ -158,7 +158,7 @@ public class player_controler : MonoBehaviour
         }
         if (other.CompareTag("enemy") && !canvas_controller.Instance.play && clock > 0)
         {
-            Sound_Manager.Instance.Play_Music("BGM", 0);
+            Sound_Manager.Instance.Play_Music("BGM-Action", 0);
             Sound_Manager.Instance.stop_all_sound_effect();
             Sound_Manager.Instance.Play_Sound("GameLost");
 

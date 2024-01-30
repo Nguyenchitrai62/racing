@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class Preloader : MonoBehaviour
 {
     public Image progressBar;
-
+    public float timer;
     void Start()
     {
         StartCoroutine(LoadMainSceneAsync());
+        timer = Time.time;
     }
 
     IEnumerator LoadMainSceneAsync()
@@ -22,10 +23,11 @@ public class Preloader : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             // Cập nhật UI progressBar
-            progressBar.fillAmount = asyncLoad.progress;
+            if ((Time.time - timer) / 2f < 1)
+            progressBar.fillAmount = /*asyncLoad.progress*/ (Time.time - timer) / 2f;
 
             // Kích hoạt cảnh khi tải xong (progress >= 0.9 do Unity giữ lại 10% cuối cùng)
-            if (asyncLoad.progress >= 0.9f)
+            if (asyncLoad.progress >= 0.9f && progressBar.fillAmount > 0.95f)
             {
                 // Kích hoạt cảnh tải xong
                 asyncLoad.allowSceneActivation = true;

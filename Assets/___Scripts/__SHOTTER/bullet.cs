@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, mainCamera.transform.position) > 100)
+        if (Vector3.Distance(transform.position, mainCamera.transform.position) > 300)
         {
             gameObject.SetActive(false);
         }
@@ -51,9 +51,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
-            Sound_Manager.Instance.Play_Sound("Explosion");
             if (other.GetComponent<Animator>().GetInteger("state") != 16)
             {
+                Sound_Manager.Instance.Play_Sound("Explosion");
                 gameObject.SetActive(false);
 
                 _no.transform.position = transform.position - new Vector3(0, 0, 3);
@@ -95,6 +95,7 @@ public class Bullet : MonoBehaviour
                     //}
 
                     other.GetComponent<Animator>().SetInteger("state", 16);
+                    other.GetComponent<BoxCollider>().enabled = false;
                     other.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     DOTween.Sequence()
                     .AppendInterval(3f)

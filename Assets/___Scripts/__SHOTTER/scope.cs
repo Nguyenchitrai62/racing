@@ -17,6 +17,7 @@ public class Scope : MonoBehaviour
     public GameObject virtual_camera;
     public PostProcessVolume volume;
     public GameObject sniper;
+    private Animator anim;
 
     private Vignette vignetteEffect;
     private Camera mainCamera;
@@ -29,7 +30,7 @@ public class Scope : MonoBehaviour
 
     bool check; // chạy aim enemy 1 lần
     Vector2 start_position;
-    float speed_bullet = 150;
+    float speed_bullet = 300;
     public static bool aim_enemy;
 
     private float xRotation = 0f;
@@ -40,8 +41,11 @@ public class Scope : MonoBehaviour
 
     private Vector3 originalPosition;
     public GameObject shell;
+
+    public static bool play_shot_anim;
     private void Awake()
     {
+        play_shot_anim = false;
         originalPosition = sniper.transform.localPosition;
         Sound_Manager.Instance.Play_Music("BGM-Action", 0);
         Sound_Manager.Instance.Play_Music("BGM-Action", 1);
@@ -49,8 +53,9 @@ public class Scope : MonoBehaviour
 
         mainCamera = GetComponent<Camera>();
         bullet_rb = bullet.GetComponent<Rigidbody>();
+        anim = sniper.GetComponent<Animator>();
 
-        sensitivity_camera = 0.1f * zoom_camera / 60;
+        sensitivity_camera = 0.15f * zoom_camera / 60;
         normal_camera = mainCamera.fieldOfView;
         scope.color = scope_Not_Active_Color;
         virtual_camera.SetActive(false);
@@ -67,6 +72,7 @@ public class Scope : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(anim.GetInteger("state"));
         if (Bullet.shake_camera)
         {
             StartCoroutine(Shake(1f, 2f));
@@ -84,10 +90,16 @@ public class Scope : MonoBehaviour
         else
         {
             sniper.SetActive(true);
-            shell.SetActive(true);
+            if (play_shot_anim)
+            {
+                anim.SetInteger("state", 1);
+                play_shot_anim = false;
+            }
+            //shell.SetActive(true);
         }
         if (Input.GetMouseButton(0) && !is_hold && Time.time - start_time_shot > reload && !virtual_camera.activeSelf)
         {
+            anim.SetInteger("state", 0);
             is_hold = true;
             start_position = Input.mousePosition;
         }
@@ -111,7 +123,7 @@ public class Scope : MonoBehaviour
                             if (crit < 25 || spawn.cur_HP[spawn.pooledObjects.IndexOf(hit.transform.gameObject)] <= 1)
                             {
                                 aim_enemy = true;
-                                speed_bullet = 25;
+                                speed_bullet = 50;
                                 hit.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
                                 HP_Sub = 3;
                             }
@@ -124,7 +136,7 @@ public class Scope : MonoBehaviour
                     else
                     {
                         aim_enemy = false;
-                        speed_bullet = 150;
+                        speed_bullet = 300;
                     }
                 }
             }
@@ -155,13 +167,16 @@ public class Scope : MonoBehaviour
             yRotation += deltaX;
             yRotation = Mathf.Clamp(yRotation, -45, 45);
 
-            mainCamera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            //mainCamera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            mainCamera.transform.DOLocalRotate(new Vector3(xRotation, yRotation, 0f), 0.2f);
 
             start_position = Input.mousePosition;
         }
-
-
     }
+
+
+
+
 
     void Activate_Scope()
     {
@@ -187,9 +202,10 @@ public class Scope : MonoBehaviour
 
     void Shoot()
     {
+        play_shot_anim = true;
         Sound_Manager.Instance.Play_Sound("GunShot");
 
-        Invoke("Recoil", 0.1f);
+        //Invoke("Recoil", 0.1f);
         Invoke("play_reload", 0.5f);
 
         bullet.SetActive(true);
@@ -202,6 +218,8 @@ public class Scope : MonoBehaviour
         //bật virtural để tạo video slow motion
         if (bullet.activeSelf && aim_enemy)
         {
+            play_shot_anim = false;
+
             virtual_camera.SetActive(true);
             smoke_bullet.SetActive(true);
 
@@ -211,10 +229,11 @@ public class Scope : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(0, 7, 0);
+            transform.position = new Vector3(0, 15, 0);
 
             if (check)
             {
+                play_shot_anim = false;
                 virtual_camera.SetActive(false);
                 smoke_bullet.SetActive(false);
 
@@ -224,7 +243,7 @@ public class Scope : MonoBehaviour
             }
             check = false;
             aim_enemy = false;
-            speed_bullet = 150;
+            speed_bullet = 300;
         }
     }
     public int count_obj_active_true()

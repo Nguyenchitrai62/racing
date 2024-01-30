@@ -62,6 +62,7 @@ public class canvas_controller : MonoBehaviour
 
 
     private GameObject end_minigame;
+    private GameObject start_minigame;
     Transform popup_settings;
     Transform _main_menu;
     Transform _play;
@@ -128,6 +129,7 @@ public class canvas_controller : MonoBehaviour
         else all_minigame.SetActive(false);
 
         end_minigame = transform.Find("whack_mouse").Find("end_minigame").gameObject;
+        start_minigame = GameObject.Find("Canvas").transform.Find("whack_mouse/start").gameObject;
         end_minigame.SetActive(false);
 
         int i = 0;
@@ -292,6 +294,7 @@ public class canvas_controller : MonoBehaviour
             _main_menu.gameObject.SetActive(false);
             float temp = 15 - (Time.time - _time_minigame);
             if (end_minigame.activeSelf && temp > 0) _time_minigame = Time.time - 15;
+            if (start_minigame.activeSelf) _time_minigame = Time.time;
             if (temp > 0 && temp < 14.9f)
             {
                 if (transform.GetComponent<Canvas>().renderMode != RenderMode.ScreenSpaceCamera)
@@ -316,13 +319,15 @@ public class canvas_controller : MonoBehaviour
                 Sound_Manager.Instance.Play_sound_effect(18);
                 Sound_Manager.Instance.Play_Music("BGM-Casual", 0);
                 Sound_Manager.Instance.Stop_sound_effect(0);
+                PlayerPrefs.SetFloat("score" + gameObject.scene.name, mouse_minigame.score_mini_game);
+
                 end_minigame.SetActive(true);
                 pause_minigame.SetActive(false);
-                PlayerPrefs.SetFloat("score_mini_game", mouse_minigame.score_mini_game);
                 //score_value_text.text = mouse_minigame.score_mini_game.ToString();
                 if (temp > -0.1)
                 {
                     money_claim_value.text = mouse_minigame.score_mini_game.ToString();
+                    PlayerPrefs.SetFloat("high_score_whack_mouse", mouse_minigame.score_mini_game);
                 }
             }
         }

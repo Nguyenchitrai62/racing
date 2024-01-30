@@ -185,13 +185,13 @@ public class enemy_controller : MonoBehaviour
         if (have_target)
         {
             anim.SetInteger("state", 12);
-            Sound_Manager.Instance.Play_sound_effect(49);
-            Sound_Manager.Instance.Stop_sound_effect(30);
+            //Sound_Manager.Instance.Play_sound_effect(49);
+            //Sound_Manager.Instance.Stop_sound_effect(30);
         }
         else
         {
-            Sound_Manager.Instance.Play_sound_effect(30);
-            Sound_Manager.Instance.Stop_sound_effect(49);
+            //Sound_Manager.Instance.Play_sound_effect(30);
+            //Sound_Manager.Instance.Stop_sound_effect(49);
         }
     }
 

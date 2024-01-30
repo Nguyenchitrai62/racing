@@ -29,6 +29,7 @@ public class mouse_minigame : MonoBehaviour
 
     private GameObject[] game_obj = new GameObject[2];
 
+    public GameObject start;
     public GameObject end_minigame;
 
     public Button myButton;
@@ -40,21 +41,20 @@ public class mouse_minigame : MonoBehaviour
     public TextMeshProUGUI claim_x2_text;
     private void OnEnable()
     {
+        canvas_controller.active_all_minigame = true;
         score_mini_game = 0;
     }
 
-    private void Start()
+    private void Awake()
     {
-        canvas_controller.active_all_minigame = true;
-
-        objectPool = new List<RectTransform>();
-        for (int i = 0; i < 8; i++)
-        {
-            RectTransform obj = Instantiate(objectToPool);
-            obj.transform.SetParent(canvas.transform, false);
-            obj.gameObject.SetActive(false);
-            objectPool.Add(obj);
-        }
+        //objectPool = new List<RectTransform>();
+        //for (int i = 0; i < 8; i++)
+        //{
+        //    RectTransform obj = Instantiate(objectToPool);
+        //    obj.transform.SetParent(canvas.transform, false);
+        //    obj.gameObject.SetActive(false);
+        //    objectPool.Add(obj);
+        //}
 
         game_obj[0] = transform.Find("mouse_1").gameObject;
         game_obj[1] = transform.Find("mouse_2").gameObject;
@@ -68,7 +68,7 @@ public class mouse_minigame : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!end_minigame.activeSelf)
+        if (!end_minigame.activeSelf && !start.activeSelf)
         {
             if (random_value < 70 && Time.time - time_random_start > 1)
             {
@@ -179,10 +179,10 @@ public class mouse_minigame : MonoBehaviour
     }
     public void plus_10()
     {
-        foreach (RectTransform obj in objectPool)
-        {
-            obj.gameObject.SetActive(false);
-        }
+        //foreach (RectTransform obj in objectPool)
+        //{
+        //    obj.gameObject.SetActive(false);
+        //}
         score_mini_game += 10f;
         PlayerPrefs.SetFloat("score_mini_game", score_mini_game);
     }

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class spawn : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class spawn : MonoBehaviour
     public GameObject gift;
     public GameObject UI_game_over;
 
+    public List<GameObject> GAN;
+    public List<GameObject> VUA;
+    public List<GameObject> XA;
+
     public int initialPoolSize = 20; // Kích thước ban đầu của pool
 
     public static List<GameObject> pooledObjects; // Danh sách chứa các đối tượng trong pool
     public static int[] cur_HP = new int[100];
     public static int wave;
     public static bool is_spawn;
-    public static float speed_enemy = 3;
+    public static float speed_enemy = 10;
 
-    private float scale_enemy = 5;
+    private float scale_enemy = 15;
 
     private void OnEnable()
     {
@@ -71,6 +76,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
         }
         if (is_spawn && wave >= 4 && wave <= 6)
@@ -89,6 +96,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
             for (int i = 1; i <= wave - random_spawn_xa; i++)
             {
@@ -102,6 +111,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
         }
         if (is_spawn && wave >= 7)
@@ -121,6 +132,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
             for (int i = 1; i <= random_spawn_xa; i++)
             {
@@ -134,6 +147,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
             for (int i = 1; i <= wave - random_spawn_xa - random_spawn_gan; i++)
             {
@@ -147,6 +162,8 @@ public class spawn : MonoBehaviour
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
                 temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<BoxCollider>().enabled = true;
+
             }
         }
     }
@@ -192,15 +209,15 @@ public class spawn : MonoBehaviour
 
     public Vector3 spawn_xa()
     {
-        return new Vector3(Random.Range(-10, 10), 0, Random.Range(65, 80));
+        return XA[Random.Range(0, XA.Count)].transform.position;
     }
     public Vector3 spawn_vua()
     {
-        return new Vector3(Random.Range(-10, 10), 0, Random.Range(50, 65));
+        return VUA[Random.Range(0, VUA.Count)].transform.position;
     }
     public Vector3 spawn_gan()
     {
-        return new Vector3(Random.Range(-10, 10), 0, Random.Range(35, 50));
+        return GAN[Random.Range(0, GAN.Count)].transform.position;
     }
     public void DisableAllAnimators()
     {
@@ -222,6 +239,7 @@ public class spawn : MonoBehaviour
         Sound_Manager.Instance.Play_Music("BGM-Action", 0);
         Sound_Manager.Instance.Play_Sound("GameLost");
 
+        PlayerPrefs.SetFloat("score" + gameObject.scene.name, Bullet.score);
         UI_game_over.SetActive(true);
         DisableAllAnimators();
     }
