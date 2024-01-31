@@ -10,13 +10,17 @@ public class arrow : MonoBehaviour
 
     private bool check;
 
+    private BoxCollider box;
+
     void Awake()
     {
+        box = GetComponent<BoxCollider>();
         mainCamera = Camera.main;
 
         if (arrowImage == null)
         {
             arrowImage = Instantiate(arrowImagePrefab, GameObject.Find("Canvas").transform.Find("play")); // Tạo đối tượng Image từ Prefab
+            arrowImage.gameObject.SetActive(false);
         }
         check = true;
     }
@@ -63,6 +67,10 @@ public class arrow : MonoBehaviour
             arrowImage.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else
+        {
+            arrowImage.gameObject.SetActive(false);
+        }
+        if (!box.enabled)
         {
             arrowImage.gameObject.SetActive(false);
         }

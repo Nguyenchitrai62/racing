@@ -463,6 +463,7 @@ public class car_ctrl : MonoBehaviour
     {
         if (speed_value > 1 && (IM.horizontal == -1 || IM.horizontal == 1))
         {
+            drive = drive_type.all_wheel_drive;
             Sound_Manager.Instance.Play_sound_effect(15);
             if (!vfx[6].isPlaying)
             {
@@ -472,6 +473,7 @@ public class car_ctrl : MonoBehaviour
         }
         else
         {
+            drive = drive_type.rear_wheel_drive;
             Sound_Manager.Instance.Stop_sound_effect(15);
             if (vfx[6].isPlaying)
             {

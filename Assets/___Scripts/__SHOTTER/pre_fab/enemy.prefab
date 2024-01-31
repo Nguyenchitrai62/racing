@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 9158999728664709646}
   - component: {fileID: 1001194948650522018}
   - component: {fileID: 1592015668487880886}
+  - component: {fileID: -7092084809551866779}
   m_Layer: 4
   m_Name: enemy
   m_TagString: enemy
@@ -784,6 +785,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.6, z: 1}
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &-7092084809551866779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911164491641114118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8f12f7b7406b84483ae38526677c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowImagePrefab: {fileID: 5530699549639453292, guid: 2b079d7906d11ac469593235bbaf570e, type: 3}
 --- !u!1 &4917583983020438034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1357,7 @@ Transform:
   m_GameObject: {fileID: 9045751097192059445}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 2.1, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.20000002, z: 0.20000002}
+  m_LocalScale: {x: 0.55, y: 0.18, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7480076461574163718}

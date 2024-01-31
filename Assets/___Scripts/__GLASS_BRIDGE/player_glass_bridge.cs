@@ -52,6 +52,8 @@ public class player_glass_bridge : MonoBehaviour
     float time_onground_false;
 
     private Animator anim;
+
+    public static bool check;
     private void Reset()
     {
 #if UNITY_EDITOR
@@ -122,6 +124,7 @@ public class player_glass_bridge : MonoBehaviour
     }
     private void Awake()
     {
+        check = true;
         Sound_Manager.Instance.stop_all_sound_effect();
         Sound_Manager.Instance.Play_Music("BGM-Action", 0);
         Sound_Manager.Instance.Play_Music("BGM-Action", 1);
@@ -193,7 +196,7 @@ public class player_glass_bridge : MonoBehaviour
 
             pause_bt.SetActive(false);
             highlight_duration = 1;
-            level_value_text.text = (level_value - 1).ToString();
+            //level_value_text.text = (level_value - 1).ToString();
             if (score == 0 && myButton.gameObject.activeSelf)
             {
                 myButton.onClick.Invoke();
@@ -324,12 +327,12 @@ public class player_glass_bridge : MonoBehaviour
         count_down_time_value -= 0.05f;
         if (count_down_time_value >= 10)
         {
-            count_down_time_text.text = "0 : " + count_down_time_value.ToString("F2");
+            count_down_time_text.text = count_down_time_value.ToString("F2");
         }
         else
         {
             if (count_down_time_value <= 5) Sound_Manager.Instance.Play_sound_effect(0);
-            count_down_time_text.text = "0 : 0" + count_down_time_value.ToString("F2");
+            count_down_time_text.text = /*"0 : 0" + */count_down_time_value.ToString("F2");
         }
 
         if (count_down_time_value == 0)
@@ -344,8 +347,9 @@ public class player_glass_bridge : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Finish") && !game_over.activeSelf)
+        if (collision.gameObject.CompareTag("Finish") && !game_over.activeSelf && check)
         {
+            check = false;
             Sound_Manager.Instance.Play_sound_effect(12);
             Sound_Manager.Instance.Play_sound_effect(17);
             anim.SetInteger("state", 0);
@@ -355,6 +359,7 @@ public class player_glass_bridge : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("destroy"))
         {
+            PlayerPrefs.SetFloat("score" + gameObject.scene.name, level_value - 1);
             map_value = 0;
             highlight_duration = 1;
             game_over.SetActive(true);

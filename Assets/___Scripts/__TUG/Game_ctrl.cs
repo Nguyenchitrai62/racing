@@ -47,6 +47,7 @@ public class Game_ctrl : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Debug.Log(point);
         if (check && game_ctrl.activeSelf && !game_over.activeSelf)
         {
             if (player[0].GetComponent<Animator>().GetInteger("state") == 0)
@@ -134,7 +135,7 @@ public class Game_ctrl : MonoBehaviour
                 level = 0;
             }
         }
-        All_char.transform.position = new Vector3(All_char.transform.position.x, All_char.transform.position.y, -point / 25f);
+        All_char.transform.position = new Vector3(All_char.transform.position.x, All_char.transform.position.y, -point / 50f);
         if (!game_over.activeSelf) Invoke("check_process", 0.05f);
     }
 

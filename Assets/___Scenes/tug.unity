@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 71f14a2d79f732f4d9893ef1b911f4ff, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6bfab16f387f95e4bb60f866299be241, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -668,6 +668,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1774,6 +1782,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2812,6 +2828,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3356,6 +3380,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4261,6 +4293,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6045,6 +6085,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6140,6 +6188,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6611,6 +6667,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7306,7 +7370,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -7577,6 +7641,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9253,6 +9325,14 @@ PrefabInstance:
     - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061711117062828133, guid: 02c26a118fd1d894d9bf8266081bad18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
