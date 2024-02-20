@@ -23,11 +23,11 @@ public class Sound_setting : MonoBehaviour
     public void music_on()
     {
         PlayerPrefs.SetInt("music", 1);
-        Sound_Manager.Instance.Play_Music("BGM", 1);
+        Sound_Manager.Instance.Play_Music("BGM-Action", 1);
     }
     public void music_off()
     {
         PlayerPrefs.SetInt("music", 0);
-        Sound_Manager.Instance.Play_Music("BGM", 0);
+        Sound_Manager.Instance.Play_Music("BGM-Action", 0);
     }
 }

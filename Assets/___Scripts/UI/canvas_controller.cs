@@ -84,10 +84,9 @@ public class canvas_controller : MonoBehaviour
     public List<TextMeshProUGUI> text_cup;
     public GameObject pause_minigame;
     public static bool active_all_minigame = false;
-    public GameObject fade_in;
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 120;
 
         Instance = this;
         //load
@@ -123,7 +122,6 @@ public class canvas_controller : MonoBehaviour
         {
             all_minigame.SetActive(true);
             map[0].transform.parent.gameObject.SetActive(false);
-            fade_in.SetActive(true);
             active_all_minigame = false;
         }
         else all_minigame.SetActive(false);
@@ -393,7 +391,7 @@ public class canvas_controller : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene("game_1");
+        SceneManager.LoadSceneAsync("game_1");
         Time.timeScale = 1;
     }
     public void get_money()
@@ -492,15 +490,14 @@ public class canvas_controller : MonoBehaviour
     {
         popup_settings.gameObject.SetActive(true);
     }
-    public void close_popup_setting()
-    {
-        popup_settings.gameObject.SetActive(false);
-    }
     public void open_popup_shop()
     {
-        canvas_skin.SetActive(true);
-        change_skin = true;
-        main_menu = false;
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() =>
+        {
+            canvas_skin.SetActive(true);
+            change_skin = true;
+            main_menu = false;  
+        });
     }
     public void skip()
     {
@@ -610,31 +607,31 @@ public class canvas_controller : MonoBehaviour
     //}
     public void plappy_bird()
     {
-        SceneManager.LoadSceneAsync("plappy_bird");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("plappy_bird"));
     }
     public void racing()
     {
-        SceneManager.LoadSceneAsync("racing");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("racing"));
     }
     public void shotter()
     {
-        SceneManager.LoadSceneAsync("shotter");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("shotter"));
     }
     public void squid_game()
     {
-        SceneManager.LoadSceneAsync("squid_game");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("squid_game"));
     }
     public void glass_bridge()
     {
-        SceneManager.LoadSceneAsync("glass_bridge");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("glass_bridge"));
     }
     public void kart()
     {
-        SceneManager.LoadSceneAsync("kart");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("kart"));
     }
     public void tug()
     {
-        SceneManager.LoadSceneAsync("tug");
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() => SceneManager.LoadSceneAsync("tug"));
     }
     public void show_all_minigame()
     {

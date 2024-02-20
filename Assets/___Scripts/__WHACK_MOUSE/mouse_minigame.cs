@@ -39,12 +39,7 @@ public class mouse_minigame : MonoBehaviour
 
     public TextMeshProUGUI claim_x1_text;
     public TextMeshProUGUI claim_x2_text;
-    private void OnEnable()
-    {
-        canvas_controller.active_all_minigame = true;
-        score_mini_game = 0;
-    }
-
+ 
     private void Awake()
     {
         //objectPool = new List<RectTransform>();
@@ -185,5 +180,10 @@ public class mouse_minigame : MonoBehaviour
         //}
         score_mini_game += 10f;
         PlayerPrefs.SetFloat("score_mini_game", score_mini_game);
+    }
+    public void active_all_minigame_true()
+    {
+        canvas_controller.active_all_minigame = true;
+        score_mini_game = 0;
     }
 }

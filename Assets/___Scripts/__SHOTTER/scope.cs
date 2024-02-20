@@ -72,7 +72,7 @@ public class Scope : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(anim.GetInteger("state"));
+        //Debug.Log(anim.GetInteger("state"));
         if (Bullet.shake_camera)
         {
             StartCoroutine(Shake(1f, 2f));

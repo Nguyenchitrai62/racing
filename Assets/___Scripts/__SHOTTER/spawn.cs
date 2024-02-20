@@ -19,7 +19,7 @@ public class spawn : MonoBehaviour
     public static int[] cur_HP = new int[100];
     public static int wave;
     public static bool is_spawn;
-    public static float speed_enemy = 10;
+    public static float speed_enemy = 5;
 
     private float scale_enemy = 15;
 
@@ -75,8 +75,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
         }
@@ -95,8 +96,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
             for (int i = 1; i <= wave - random_spawn_xa; i++)
@@ -110,8 +112,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
         }
@@ -131,8 +134,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
             for (int i = 1; i <= random_spawn_xa; i++)
@@ -146,8 +150,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
             for (int i = 1; i <= wave - random_spawn_xa - random_spawn_gan; i++)
@@ -161,8 +166,9 @@ public class spawn : MonoBehaviour
 
                 Vector3 target = new Vector3(transform.position.x, 0, transform.position.z);
                 temp.GetComponent<Rigidbody>().velocity = (target - temp.transform.position).normalized * speed_enemy;
-                temp.GetComponent<Animator>().SetInteger("state", 11);
+                temp.GetComponent<Animator>().SetInteger("state", 12);
                 temp.GetComponent<BoxCollider>().enabled = true;
+                temp.transform.LookAt(transform.position);
 
             }
         }

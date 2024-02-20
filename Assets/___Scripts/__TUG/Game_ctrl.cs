@@ -41,6 +41,7 @@ public class Game_ctrl : MonoBehaviour
         check = true;
         canvas_controller.money = PlayerPrefs.GetFloat("money", 0);
         monney_value_text.text = canvas_controller.money.ToString();
+        canvas_controller.active_all_minigame = true;
 
         freezer = false;
         strong_pull = false;

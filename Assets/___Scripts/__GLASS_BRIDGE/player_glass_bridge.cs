@@ -41,6 +41,7 @@ public class player_glass_bridge : MonoBehaviour
     public GameObject GO;
 
     public GameObject fade_out;
+    public Scene_Transitions scene_transitions;
     public GameObject back_bt;
     public GameObject pause_bt;
 
@@ -155,7 +156,7 @@ public class player_glass_bridge : MonoBehaviour
     {
         for (int i = 0; i < glass_left.Count; i++)
         {
-            if (i == 0) yield return new WaitForSeconds(1);
+            if (i == 0) yield return new WaitForSeconds(2);
             else yield return new WaitForSeconds(highlight_duration);
             if (Random.Range(0, 2) == 0)
             {
@@ -392,8 +393,9 @@ public class player_glass_bridge : MonoBehaviour
         map_value++;
 
         next = true;
-        fade_out.SetActive(true);
-        Invoke("replay", 0.8f);
+        //fade_out.SetActive(true);
+        scene_transitions.close_effect();
+        Invoke("replay", 1f);
         score += 10;
         PlayerPrefs.SetFloat("score", score);
         level_value++;
