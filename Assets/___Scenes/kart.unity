@@ -480,7 +480,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &11333382
 GameObject:
   m_ObjectHideFlags: 0
@@ -36649,8 +36648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31092a5a3d4e06e48900010ceb86d4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
+  targetScale: {x: 0.8, y: 0.8, z: 0.8}
 --- !u!1 &1924757415
 GameObject:
   m_ObjectHideFlags: 0

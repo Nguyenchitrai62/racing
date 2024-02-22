@@ -100,7 +100,7 @@ public class Game_ctrl : MonoBehaviour
             point++;
             if (strong_pull) point++;
 
-            if (point > 200)
+            if (point > 240)
             {
                 Sound_Manager.Instance.Play_Music("tug", 0);
                 Sound_Manager.Instance.Play_Sound("Wilhelm");
@@ -109,7 +109,6 @@ public class Game_ctrl : MonoBehaviour
                 CancelInvoke("sub");
                 CancelInvoke("random_target");
 
-                game_over.SetActive(true);
                 game_ctrl.SetActive(false);
                 monney_claim_value.text = "100";
                 level++;
@@ -121,7 +120,7 @@ public class Game_ctrl : MonoBehaviour
 
             if (!freezer) point -= 1 + level * 0.25f;
 
-            if (point < -200)
+            if (point < -240)
             {
                 Sound_Manager.Instance.Play_Music("tug", 0);
                 Sound_Manager.Instance.Play_Sound("Wilhelm");
@@ -131,13 +130,12 @@ public class Game_ctrl : MonoBehaviour
                 CancelInvoke("random_target");
 
                 myButton.onClick.Invoke();
-                game_over.SetActive(true);
                 game_ctrl.SetActive(false);
                 level = 0;
             }
         }
         All_char.transform.position = new Vector3(All_char.transform.position.x, All_char.transform.position.y, -point / 50f);
-        if (!game_over.activeSelf) Invoke("check_process", 0.05f);
+        if (game_ctrl.activeSelf) Invoke("check_process", 0.05f);
     }
 
     public void replay()
@@ -183,10 +181,14 @@ public class Game_ctrl : MonoBehaviour
     }
     void play_game_lost()
     {
+        game_over.SetActive(true);
+
         Sound_Manager.Instance.Play_Sound("GameLost");
     }
     void play_game_win()
     {
+        game_over.SetActive(true);
+
         Sound_Manager.Instance.Play_Sound("GameWin");
     }
 }

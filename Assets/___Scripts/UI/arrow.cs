@@ -82,4 +82,8 @@ public class arrow : MonoBehaviour
             check = false;
         }
     }
+    private void OnDisable()
+    {
+        arrowImage.gameObject.SetActive(false);
+    }
 }

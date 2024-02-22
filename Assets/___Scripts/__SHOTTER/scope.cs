@@ -55,7 +55,7 @@ public class Scope : MonoBehaviour
         bullet_rb = bullet.GetComponent<Rigidbody>();
         anim = sniper.GetComponent<Animator>();
 
-        sensitivity_camera = 0.15f * zoom_camera / 60;
+        sensitivity_camera = 0.18f * zoom_camera / 60;
         normal_camera = mainCamera.fieldOfView;
         scope.color = scope_Not_Active_Color;
         virtual_camera.SetActive(false);
@@ -168,7 +168,7 @@ public class Scope : MonoBehaviour
             yRotation = Mathf.Clamp(yRotation, -45, 45);
 
             //mainCamera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
-            mainCamera.transform.DOLocalRotate(new Vector3(xRotation, yRotation, 0f), 0.2f);
+            mainCamera.transform.DOLocalRotate(new Vector3(xRotation, yRotation, 0f), 0.5f);
 
             start_position = Input.mousePosition;
         }

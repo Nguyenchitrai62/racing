@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &72684732
 GameObject:
   m_ObjectHideFlags: 0
@@ -11220,7 +11219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1001 &1032857625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16152,7 +16150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &1460078568
 GameObject:
   m_ObjectHideFlags: 0
@@ -16244,7 +16241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &1512918431
 GameObject:
   m_ObjectHideFlags: 0

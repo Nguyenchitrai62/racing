@@ -93,6 +93,10 @@ public class player_controler : MonoBehaviour
             objectPool.Add(obj);
         }
     }
+    private void Update()
+    {
+        rotate_model_in_shop();
+    }
     private void FixedUpdate()
     {
         rb.AddForce(Vector3.down * 10);
@@ -110,7 +114,6 @@ public class player_controler : MonoBehaviour
             anim.avatar = skin[skin_value].GetComponent<Animator>().avatar;
             skin[skin_value].SetActive(true);
         }
-        rotate_model_in_shop();
         if (canvas_controller.Instance.play && canvas_controller.cur_score < canvas_controller.max_score)
         {
             if (Input.GetMouseButton(0) && (joystick.Horizontal != 0 || joystick.Vertical != 0))
@@ -315,8 +318,10 @@ public class player_controler : MonoBehaviour
             {
                 Vector2 currentSwipe = (Vector2)Input.mousePosition - startTouchPosition;
                 startTouchPosition = Input.mousePosition;
-                float rotationFactor = currentSwipe.x * Time.deltaTime * -20;
+                float rotationFactor = currentSwipe.x * Time.deltaTime * -100;
                 transform.Rotate(Vector3.up, rotationFactor, Space.World);
+
+                //transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, rotationFactor, 0), 0.5f);
             }
         }
     }

@@ -18,7 +18,7 @@ public class canvas_controller : MonoBehaviour
     public static float cur_score;
     public static float max_score;
 
-    public static float speed = 6f;
+    public static float speed = 5f;
     public static float range = 1;
     public static float money = 0;
     public static float level = 1;
