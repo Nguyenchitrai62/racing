@@ -299,6 +299,7 @@ public class player_controler : MonoBehaviour
     public void setup_light()
     {
         light_ctrl.transform.eulerAngles = new Vector3(180f, 0, 0);
+        transform.eulerAngles = new Vector3(0, 180, 0);
     }
     void rotate_model_in_shop()
     {
@@ -322,6 +323,10 @@ public class player_controler : MonoBehaviour
                 transform.Rotate(Vector3.up, rotationFactor, Space.World);
 
                 //transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, rotationFactor, 0), 0.5f);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up, -100 * Time.deltaTime, Space.World);
             }
         }
     }

@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Scope : MonoBehaviour
@@ -17,6 +18,8 @@ public class Scope : MonoBehaviour
     public GameObject virtual_camera;
     public PostProcessVolume volume;
     public GameObject sniper;
+    public GameObject fade_in;
+    public GameObject fade_out;
     private Animator anim;
 
     private Vignette vignetteEffect;
@@ -234,12 +237,18 @@ public class Scope : MonoBehaviour
             if (check)
             {
                 play_shot_anim = false;
-                virtual_camera.SetActive(false);
-                smoke_bullet.SetActive(false);
-
-                GetComponent<BoxCollider>().enabled = true;
-                cinemachineBrain.enabled = false;
-                transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+                fade_out.SetActive(true);
+                DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() =>
+                {
+                    virtual_camera.SetActive(false);
+                    fade_in.SetActive(true);
+                    
+                    smoke_bullet.SetActive(false);
+                    GetComponent<BoxCollider>().enabled = true;
+                    cinemachineBrain.enabled = false;
+                    transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+                });
+                
             }
             check = false;
             aim_enemy = false;
