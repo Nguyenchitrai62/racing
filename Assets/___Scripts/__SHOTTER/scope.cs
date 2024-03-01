@@ -237,12 +237,13 @@ public class Scope : MonoBehaviour
             if (check)
             {
                 play_shot_anim = false;
+
                 fade_out.SetActive(true);
                 DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() =>
                 {
-                    virtual_camera.SetActive(false);
                     fade_in.SetActive(true);
-                    
+
+                    virtual_camera.SetActive(false);
                     smoke_bullet.SetActive(false);
                     GetComponent<BoxCollider>().enabled = true;
                     cinemachineBrain.enabled = false;

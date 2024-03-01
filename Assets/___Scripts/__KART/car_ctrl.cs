@@ -76,6 +76,7 @@ public class car_ctrl : MonoBehaviour
     public List<GameObject> win_effect;
 
     private string rank_string;
+    public static float time_hide_notification;
 
     private void Awake()
     {
@@ -102,6 +103,7 @@ public class car_ctrl : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(speed_value);
         rb.drag = 0.001f + 0.001f * speed_value;
         add_force_down();
         //animate_wheels();
@@ -174,7 +176,7 @@ public class car_ctrl : MonoBehaviour
         }
         if (speed_value > 1 && !game_over.activeSelf)
         {
-            if (speed_max == 20)
+            if (speed_max == 25)
             {
                 Sound_Manager.Instance.Play_sound_effect(26);
                 Sound_Manager.Instance.Stop_sound_effect(27);
@@ -189,7 +191,7 @@ public class car_ctrl : MonoBehaviour
             Sound_Manager.Instance.Stop_sound_effect(26);
             Sound_Manager.Instance.Stop_sound_effect(27);
         }
-
+        if(Time.time > time_hide_notification) Notification.text = "";
     }
 
     public void move_vehical(float vertical)
@@ -237,7 +239,7 @@ public class car_ctrl : MonoBehaviour
         }
 
         speed_value = rb.velocity.magnitude;
-        if (speed_value < speed_max || (boost && speed_value < 30))
+        if (speed_value < speed_max || (boost && speed_value < 33))
         {
             for (int i = 0; i < wheels.Count; i++)
             {
@@ -362,11 +364,11 @@ public class car_ctrl : MonoBehaviour
             other.gameObject.SetActive(false);
             Body.gameObject.layer = LayerMask.NameToLayer("car_hide");
             StartCoroutine(SpinCar());
-            CancelInvoke("hide_notification");
             Notification.text = "<color=red>" + "BOT " + other.gameObject.name[other.gameObject.name.Length - 2] + "</color>" +
                                 " use " + other.gameObject.name.Substring(0, other.gameObject.name.Length - 4) +
                                 " " + "<color=green>" + gameObject.name + "</color>";
-            Invoke("hide_notification", 3);
+            //Invoke("hide_notification", 3);
+            time_hide_notification = Time.time + 3;
         }
         if (other.CompareTag("chest"))
         {
@@ -484,7 +486,7 @@ public class car_ctrl : MonoBehaviour
         }
         if (other.CompareTag("racetrack") || other.CompareTag("target_point") || other.CompareTag("Ramp") || other.CompareTag("Finish"))
         {
-            speed_max = 20;
+            speed_max = 25;
             if (vfx[0].isPlaying)
             {
                 vfx[0].Stop();
@@ -586,7 +588,7 @@ public class car_ctrl : MonoBehaviour
         if (skill == 3)
         {
             bread.SetActive(true);
-            bread.transform.position = transform.position + transform.forward * 3 + new Vector3(0, 1f, 0);
+            bread.transform.position = transform.position + transform.forward * 5 + new Vector3(0, 1f, 0);
         }
         skill = 0;
         skill_text.text = "Skill : ";

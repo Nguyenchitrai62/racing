@@ -25,7 +25,7 @@ public class AI_BOT : MonoBehaviour
     private GameObject ALL;
     public float motor_torque = 2500;
     public float steering_max = 40;
-    public float speed_max = 20;
+    public float speed_max = 25;
 
     public GameObject Body;
     public GameObject parent_target;
@@ -123,12 +123,12 @@ public class AI_BOT : MonoBehaviour
                 vfx[4].Stop();
                 vfx[5].Stop();
             }
-            if (speed_max == 30 && vfx[2].isStopped)
+            if (speed_max == 33 && vfx[2].isStopped)
             {
                 vfx[2].Play();
                 vfx[3].Play();
             }
-            if (speed_max == 20 && vfx[2].isPlaying)
+            if (speed_max == 25 && vfx[2].isPlaying)
             {
                 vfx[2].Stop();
                 vfx[3].Stop();
@@ -266,10 +266,10 @@ public class AI_BOT : MonoBehaviour
         float temp = Vector3.Distance(transform.position, player.transform.position);
         if (temp > 50)
         {
-            if (temp < 100) speed_max = 20 - (temp - 50) / 5;
+            if (temp < 125) speed_max = 25 - (temp - 50) / 5;
             else speed_max = 10;
         }
-        if (temp < 50 && speed_max < 20) speed_max = 20;
+        if (temp < 50 && speed_max < 25) speed_max = 25;
         if (before_player) Invoke("update_speed_max", 1f);
     }
         private void OnTriggerEnter(Collider other)
@@ -285,6 +285,11 @@ public class AI_BOT : MonoBehaviour
 
             switch (target_value) // boost nếu player đứng đầu
             {
+                case 1:
+
+                case 10:
+                case 11:
+
                 case 19:
                 case 20:
 
@@ -307,12 +312,14 @@ public class AI_BOT : MonoBehaviour
                 case 55:
 
                 case 59:
-                    if (car_ctrl.rank <= 2 && !before_player)
+                    if (/*car_ctrl.rank <= 2 &&*/ !before_player)
                     {
                         motor_torque = 4000;
-                        speed_max = 30;
+                        speed_max = 33;
                     }
                     break;
+                case 2:
+                case 13:
                 case 21:
                 case 30:
                 case 35:
@@ -322,7 +329,7 @@ public class AI_BOT : MonoBehaviour
                 case 56:
                     //case 0:
                     motor_torque = 2500;
-                    speed_max = 20;
+                    speed_max = 25;
                     break;
             }
 
@@ -363,7 +370,6 @@ public class AI_BOT : MonoBehaviour
             other.gameObject.SetActive(false);
             Body.gameObject.layer = LayerMask.NameToLayer("car_hide");
             StartCoroutine(SpinCar());
-            CancelInvoke("hide_notification");
             if (other.gameObject.name[other.gameObject.name.Length - 2] == '7')
             {
                 Notification.text = "<color=green>Player </color>" + "use " + other.gameObject.name.Substring(0, other.gameObject.name.Length - 4) +
@@ -376,7 +382,8 @@ public class AI_BOT : MonoBehaviour
                                     " " + "<color=red>" + gameObject.name + "</color>";
 
             }
-            Invoke("hide_notification", 3);
+            //Invoke("hide_notification", 3);
+            car_ctrl.time_hide_notification = Time.time + 3;
         }
         if (other.CompareTag("Ramp"))
         {
@@ -462,12 +469,12 @@ public class AI_BOT : MonoBehaviour
     }
     void speed_down()
     {
-        speed_max = 20;
+        speed_max = 25;
         motor_torque = 2500;
     }
     void skill_1()
     {
-        speed_max = 30;
+        speed_max = 33;
         motor_torque = 4000;
         Invoke("speed_down", 3);
         skill = 0;
@@ -512,20 +519,20 @@ public class AI_BOT : MonoBehaviour
         if (target_value == target.Count) target_value = 0;
     }
 
-    //void OnDrawGizmos()
-    //{
-    //    if (target == null || target.Count < 2)
-    //        return;
+    void OnDrawGizmos()
+    {
+        if (target == null || target.Count < 2)
+            return;
 
-    //    Gizmos.color = Color.green; // Đặt màu cho Gizmos. Bạn có thể thay đổi màu này theo ý muốn.
+        Gizmos.color = Color.green; // Đặt màu cho Gizmos. Bạn có thể thay đổi màu này theo ý muốn.
 
-    //    for (int i = 0; i < target.Count - 1; i++)
-    //    {
-    //        if (target[i] == null || target[i + 1] == null)
-    //            continue;
+        for (int i = 0; i < target.Count - 1; i++)
+        {
+            if (target[i] == null || target[i + 1] == null)
+                continue;
 
-    //        Gizmos.DrawLine(target[i].transform.position, target[i + 1].transform.position);
-    //    }
-    //}
+            Gizmos.DrawLine(target[i].transform.position, target[i + 1].transform.position);
+        }
+    }
 
 }
