@@ -68,6 +68,7 @@ public class AI_BOT : MonoBehaviour
         round_value = 1;
         banana.SetActive(false);
         bread.SetActive(false);
+        update_speed_max();
     }
     void FixedUpdate()
     {
@@ -250,6 +251,7 @@ public class AI_BOT : MonoBehaviour
             {
                 before_player = true;
                 car_ctrl.rank++;
+                update_speed_max();
             }
             if (before_player && angle > -90 && angle < 90)
             {
@@ -258,7 +260,19 @@ public class AI_BOT : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    void update_speed_max()
+    {
+        float temp = Vector3.Distance(transform.position, player.transform.position);
+        if (temp > 50)
+        {
+            if (temp < 100) speed_max = 20 - (temp - 50) / 5;
+            else speed_max = 10;
+        }
+        if (temp < 50 && speed_max < 20) speed_max = 20;
+        if (before_player) Invoke("update_speed_max", 1f);
+    }
+        private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("target_point"))
         {
@@ -293,7 +307,7 @@ public class AI_BOT : MonoBehaviour
                 case 55:
 
                 case 59:
-                    if (car_ctrl.rank == 1 || target_value < Bread.target_value_obj[7])
+                    if (car_ctrl.rank <= 2 && !before_player)
                     {
                         motor_torque = 4000;
                         speed_max = 30;

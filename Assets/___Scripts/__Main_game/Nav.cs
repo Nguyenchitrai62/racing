@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RandomNavDestination : MonoBehaviour
@@ -20,10 +22,11 @@ public class RandomNavDestination : MonoBehaviour
     private BoxCollider box;
 
     public bool check = false;
+    private Rigidbody rb;
     float start_time;
+    private bool run_1_time = true;
     void Start()
     {
-        transform.Find("SmokeWhiteSoftTrail").gameObject.SetActive(true);
 
         if (UI_help == null)
         {
@@ -60,8 +63,15 @@ public class RandomNavDestination : MonoBehaviour
         //nav.destination = player.transform.position;
         if (player_controler.cout_down)
         {
-            box.enabled = true;
-            SetRandomDestination();
+            if (run_1_time)
+            {
+                transform.position = new Vector3(0.07f, 0.1f, -7.28f);
+                smoke.SetActive(true);
+                run_1_time = false;
+                transform.Find("SmokeWhiteSoftTrail").gameObject.SetActive(true);
+                box.enabled = true;
+                SetRandomDestination();
+            }
         }
         if (nav.velocity.magnitude > 0f && !long_sat.activeSelf) anim.SetInteger("state", 1);
         else anim.SetInteger("state", 0);

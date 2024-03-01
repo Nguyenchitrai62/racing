@@ -9,14 +9,20 @@ public class Input_manager : MonoBehaviour
     public bool handbrake;
     public float duration = 0.2f;
 
+    private bool check= false;
+
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        //vertical = Input.GetAxis("Vertical");
-        //horizontal = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.W)) check = true;
+        if (check)
+        {
+            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxis("Horizontal");
+        }
         handbrake = (Input.GetAxis("Jump") != 0) ? true : false;
     }
 

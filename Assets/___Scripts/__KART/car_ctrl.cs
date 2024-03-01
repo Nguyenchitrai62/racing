@@ -217,6 +217,7 @@ public class car_ctrl : MonoBehaviour
                 vfx[2].Play();
                 vfx[3].Play();
                 motor_torque = 4000;
+                Anime_Speedlines.SetActive(true);
                 Invoke("speed_down", 3);
             }
             if (skill == 2)

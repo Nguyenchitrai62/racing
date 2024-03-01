@@ -25,6 +25,10 @@ public class PopupEffect : MonoBehaviour
             .SetEase(Ease.InBack) // Sử dụng ease-in back để tạo hiệu ứng nhấp nháy khi thu nhỏ
             .SetUpdate(true)
             .OnComplete(() => transform.localScale = Vector3.zero)
-            .OnComplete(() => obj.SetActive(false));
+            .OnComplete(() => 
+            {
+                obj.SetActive(false);
+                Time.timeScale = 1;
+            });
     }
 }

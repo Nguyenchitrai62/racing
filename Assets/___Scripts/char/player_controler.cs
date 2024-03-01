@@ -300,6 +300,7 @@ public class player_controler : MonoBehaviour
     {
         light_ctrl.transform.eulerAngles = new Vector3(180f, 0, 0);
         transform.eulerAngles = new Vector3(0, 180, 0);
+        rb.interpolation = RigidbodyInterpolation.None;
     }
     void rotate_model_in_shop()
     {
@@ -319,24 +320,23 @@ public class player_controler : MonoBehaviour
             {
                 Vector2 currentSwipe = (Vector2)Input.mousePosition - startTouchPosition;
                 startTouchPosition = Input.mousePosition;
-                float rotationFactor = currentSwipe.x * Time.deltaTime * -100;
-                transform.Rotate(Vector3.up, rotationFactor, Space.World);
+                transform.Rotate(Vector3.up, -currentSwipe.x, Space.World);
 
                 //transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, rotationFactor, 0), 0.5f);
             }
             else
             {
-                transform.Rotate(Vector3.up, -100 * Time.deltaTime, Space.World);
+                transform.Rotate(Vector3.up, -50 * Time.deltaTime, Space.World);
             }
         }
     }
     void clock_down()
     {
-        clock -= 0.05f;
+        clock -= 1;
         if (clock >= 0)
         {
-            text_clock.text = clock.ToString("F2");
-            Invoke("clock_down", 0.05f);
+            text_clock.text = clock.ToString("F0");
+            Invoke("clock_down", 1f);
         }
         else
         {

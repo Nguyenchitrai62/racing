@@ -328,7 +328,7 @@ public class player_glass_bridge : MonoBehaviour
         count_down_time_value -= 0.05f;
         if (count_down_time_value >= 10)
         {
-            count_down_time_text.text = count_down_time_value.ToString("F2");
+            count_down_time_text.text = count_down_time_value.ToString("F0");
         }
       
 
@@ -336,7 +336,7 @@ public class player_glass_bridge : MonoBehaviour
         {
             count_down_time_value = 0;
             Sound_Manager.Instance.Stop_sound_effect(0);
-            count_down_time_text.text = count_down_time_value.ToString("F2");
+            count_down_time_text.text = count_down_time_value.ToString("F0");
             game_over.SetActive(true);
         }
         else

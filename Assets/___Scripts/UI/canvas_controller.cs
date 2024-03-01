@@ -86,7 +86,9 @@ public class canvas_controller : MonoBehaviour
     public static bool active_all_minigame = false;
     private void Awake()
     {
-        Application.targetFrameRate = 120;
+        //Debug.Log(Screen.currentResolution.refreshRate);
+
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         Instance = this;
         //load
@@ -301,12 +303,12 @@ public class canvas_controller : MonoBehaviour
                 Sound_Manager.Instance.Play_Music("BGM-Casual", 1);
                 if (Mathf.Round(temp) < 10)
                 {
-                    time_minigame.text = "0 : 0" + (Mathf.Round(temp * 100) / 100).ToString("F2");
+                    time_minigame.text = (Mathf.Round(temp * 100) / 100).ToString("F0");
                     if (Mathf.Round(temp) <= 5) Sound_Manager.Instance.Play_sound_effect(0);
                 }
                 else
                 {
-                    time_minigame.text = "0 : " + (Mathf.Round(temp * 100) / 100).ToString("F2");
+                    time_minigame.text = (Mathf.Round(temp * 100) / 100).ToString("F0");
                 }
             }
             if (temp <= 0)

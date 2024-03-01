@@ -4892,7 +4892,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &1450536379
 GameObject:
   m_ObjectHideFlags: 0
@@ -7103,18 +7102,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1425053506}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1638207507}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -7127,13 +7114,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1715077060}
-        m_TargetAssemblyTypeName: pause, Assembly-CSharp
-        m_MethodName: time_scale_1
-        m_Mode: 1
+      - m_Target: {fileID: 1425053510}
+        m_TargetAssemblyTypeName: PopupEffect, Assembly-CSharp
+        m_MethodName: close_effect
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1425053506}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7411,7 +7398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1001 &1882165085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8011,7 +7997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1001 &1995365409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8339,7 +8324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScale: {x: 1, y: 1, z: 1}
-  popupDuration: 0.5
 --- !u!1 &2102946975
 GameObject:
   m_ObjectHideFlags: 0
